@@ -1,6 +1,6 @@
 # get-env-or-die
-![Build](https://github.com/hupe1980/get-env-or-die/workflows/Build/badge.svg)
-![Release](https://github.com/hupe1980/get-env-or-die/workflows/Release/badge.svg)
+![Build](https://github.com/hupe1980/get-env-or-die/workflows/build/badge.svg)
+![Release](https://github.com/hupe1980/get-env-or-die/workflows/release/badge.svg)
 
 > Utility to get and typecast environment variables.
 
