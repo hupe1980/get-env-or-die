@@ -47,4 +47,5 @@ junit.xml
 !/tsconfig.jest.json
 !/.eslintrc.json
 !/tsconfig.eslint.json
+.DS_Store
 !/.github/workflows/release.yml
