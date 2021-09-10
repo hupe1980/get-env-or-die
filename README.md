@@ -49,14 +49,14 @@ const keywords = getArrayEnv('KEYWORDS') // => ['a','b','c']
 ```typescript
 import { getUrlEnv } from 'get-env-or-die';
 process.env.URL = 'http://example.com';
-const keywords = getUrlEnv('URL') // => new URL('http://example.com')
+const url = getUrlEnv('URL') // => new URL('http://example.com')
 ```
 
 ### Date environment variable
 ```typescript
 import { getDateEnv } from 'get-env-or-die';
 process.env.DATE = '2020-11-11';
-const keywords = getDateEnv('DATE') // => new Date('2020-11-11')
+const date = getDateEnv('DATE') // => new Date('2020-11-11')
 ```
 
 ### Errors
