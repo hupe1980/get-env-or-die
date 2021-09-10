@@ -56,7 +56,7 @@ const keywords = getUrlEnv('URL') // => new URL('http://example.com')
 ```typescript
 import { getDateEnv } from 'get-env-or-die';
 process.env.DATE = '2020-11-11';
-const keywords = getDateEnv('URL') // => new Date('2020-11-11')
+const keywords = getDateEnv('DATE') // => new Date('2020-11-11')
 ```
 
 ### Errors
