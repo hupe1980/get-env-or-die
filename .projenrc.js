@@ -1,17 +1,24 @@
-const { TypeScriptProject } = require('projen');
+const { TypeScriptProject, DependenciesUpgradeMechanism } = require('projen');
 const project = new TypeScriptProject({
   defaultReleaseBranch: 'main',
   name: 'get-env-or-die',
   description: 'Utility to get and typecast environment variables.',
+  keywords: ['env', 'environment-variables'],
   repository: 'https://github.com/hupe1980/get-env-or-die.git',
   license: 'MIT',
   copyrightOwner: 'Frank Hübner',
   releaseToNpm: true,
-  // deps: [],                /* Runtime dependencies of this module. */
-  // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
-  // devDeps: [],             /* Build dependencies for this module. */
-  // packageName: undefined,  /* The "name" in package.json. */
-  // release: undefined,      /* Add release management to this project. */
+  depsUpgrade: DependenciesUpgradeMechanism.githubWorkflow({
+    workflowOptions: {
+      labels: ['auto-approve', 'auto-merge'],
+      secret: 'AUTOMATION_GITHUB_TOKEN',
+    },
+  }),
+  autoApproveUpgrades: true,
+  autoApproveOptions: {
+    secret: 'GITHUB_TOKEN',
+    allowedUsernames: ['hupe1980'],
+  },
 });
 project.gitignore.exclude('.DS_Store');
 project.synth();

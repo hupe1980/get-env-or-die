@@ -45,6 +45,10 @@
     "typescript": "^4.4.3"
   },
   "bundledDependencies": [],
+  "keywords": [
+    "env",
+    "environment-variables"
+  ],
   "main": "lib/index.js",
   "license": "MIT",
   "version": "0.0.0",
