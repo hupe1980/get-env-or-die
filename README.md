@@ -59,6 +59,13 @@ process.env.DATE = '2020-11-11';
 const date = getDateEnv('DATE') // => new Date('2020-11-11')
 ```
 
+### RegExp environment variable
+```typescript
+import { getRegExpEnv } from 'get-env-or-die';
+process.env.REG_EXP = '/ab+c/i';
+const regExp = getRegExpEnv('REG_EXP') // => new RegExp('ab+c', 'i')
+```
+
 ### Errors
 All functions throw an error if the environment variable is not convertible or the env is missing and no fallback is provided.
 

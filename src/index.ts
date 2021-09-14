@@ -50,9 +50,21 @@ export const getDateEnv = (name: string, fallback?: Date): Date => {
   return date;
 };
 
+export const getRegExpEnv = (name: string, fallback?: RegExp): RegExp => {
+  const env = genericGetEnv(name, fallback);
+  if (env instanceof RegExp ) return env;
+  try {
+    const match = env.match(new RegExp('^/(.*?)/([gimy]*)$'));
+    return new RegExp(match[1], match[2]);
+  } catch {
+    throw new Error(`Env ${name} is not a regExp.`);
+  }
+};
+
 const genericGetEnv = (name: string, fallback?: any): any => {
   const env = process.env[name];
   if (env) return env;
   if (fallback) return fallback;
   throw new Error(`Env ${name} does not exist and no fallback value provided.`);
 };
+

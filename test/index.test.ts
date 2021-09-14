@@ -1,5 +1,5 @@
 import { URL } from 'url';
-import { getEnv, getStringEnv, getIntEnv, getBoolEnv, getArrayEnv, getUrlEnv, getDateEnv } from '../src';
+import { getEnv, getStringEnv, getIntEnv, getBoolEnv, getArrayEnv, getUrlEnv, getDateEnv, getRegExpEnv } from '../src';
 
 test('getEnv - default', () => {
   const expected = 'hello, world!';
@@ -118,4 +118,27 @@ test('getDateEnv - die', () => {
 test('getDateEnv - convert error', () => {
   process.env.NO_DATE = 'XYZ';
   expect(() => getDateEnv('NO_DATE')).toThrow('Env NO_DATE is not a date.');
+});
+
+test('getRegExpEnv - default', () => {
+  process.env.REG_EXP_STRING = '/ab+c/';
+  expect(getRegExpEnv('REG_EXP_STRING')).toEqual(new RegExp('ab+c'));
+});
+
+test('getRegExpEnv - default with flags', () => {
+  process.env.REG_EXP_STRING = '/ab+c/i';
+  expect(getRegExpEnv('REG_EXP_STRING')).toEqual(new RegExp('ab+c', 'i'));
+});
+
+test('getRegExpEnv - fallback', () => {
+  expect(getRegExpEnv('XXX', new RegExp('ab+c', 'i'))).toEqual(new RegExp('ab+c', 'i'));
+});
+
+test('getRegExpEnv - die', () => {
+  expect(() => getRegExpEnv('XXX')).toThrow('Env XXX does not exist and no fallback value provided.');
+});
+
+test('getRegExpEnv - die', () => {
+  process.env.REG_EXP_STRING = '/ab+c/ix';
+  expect(() => getRegExpEnv('REG_EXP_STRING')).toThrow('Env REG_EXP_STRING is not a regExp.');
 });
