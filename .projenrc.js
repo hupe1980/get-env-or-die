@@ -1,4 +1,4 @@
-const { TypeScriptProject, DependenciesUpgradeMechanism } = require('projen');
+const { TypeScriptProject, DependenciesUpgradeMechanism, UpgradeDependenciesSchedule } = require('projen');
 const project = new TypeScriptProject({
   defaultReleaseBranch: 'main',
   name: 'get-env-or-die',
@@ -12,6 +12,7 @@ const project = new TypeScriptProject({
     workflowOptions: {
       labels: ['auto-approve', 'auto-merge'],
       secret: 'AUTOMATION_GITHUB_TOKEN',
+      schedule: UpgradeDependenciesSchedule.WEEKLY,
     },
   }),
   autoApproveUpgrades: true,
