@@ -8,6 +8,7 @@ const project = new TypeScriptProject({
   license: 'MIT',
   copyrightOwner: 'Frank Hübner',
   releaseToNpm: true,
+  majorVersion: 1,
   depsUpgrade: DependenciesUpgradeMechanism.githubWorkflow({
     workflowOptions: {
       labels: ['auto-approve', 'auto-merge'],
