@@ -12,6 +12,11 @@ test('getEnv - fallback', () => {
   expect(getEnv('XXX', expected)).toBe(expected);
 });
 
+test('getEnv - empty string fallback', () => {
+  const expected = '';
+  expect(getEnv('XXX', expected)).toBe(expected);
+});
+
 test('getEnv - die', () => {
   expect(() => getEnv('XXX')).toThrow('Env XXX does not exist and no fallback value provided.');
 });

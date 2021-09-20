@@ -64,7 +64,7 @@ export const getRegExpEnv = (name: string, fallback?: RegExp): RegExp => {
 const genericGetEnv = (name: string, fallback?: any): any => {
   const env = process.env[name];
   if (env) return env;
-  if (fallback) return fallback;
+  if (fallback !== undefined) return fallback;
   throw new Error(`Env ${name} does not exist and no fallback value provided.`);
 };
 
